@@ -1,0 +1,8 @@
+# ignore some of the generated analysis files
+*.ico
+*.ebk
+*.$et
+
+# ignore matlab autosave files
+*.asv
+
