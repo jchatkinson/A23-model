@@ -81,22 +81,22 @@ end
 %% Plot Coupling beam forces
 
 cbnames = {'CB-NE','CB-NW','CB-SE','CB-SW'};
-plots={'P','V2','V3','M2','M3'};
-col=[4,5,6,8,9];
+plots={'V'};
+col=[1];
 % combos={'RSAx' 'RSAx-nT' 'RSAx-pT' 'RSAy' 'RSAy-nT' 'RSAy-pT' 'AutoWind1' 'AutoWind2'};
 combos={'RSAx' 'RSAx-nT' 'RSAy' 'RSAy-nT' 'RSAy-pT' };
 % linetypes={'r','r','r','m','m','m','b','b'};
 linetypes={'r','r','m','m','m','b','b'};
 
 
-for aa = 1:length(piers)
+for aa = 1:length(cbnames)
   figure; hold on;
   
-  for bb = 1:length(combos)
+  for bb = 1:length(cbnames)
     %get the data
-    index = find(strcmp(PierName,piers{aa}) & strcmp(PierLoadCombo,combos{bb}));
-    Lvls = PierStoryLabels(index);
-    Forces = PierForces(index,:);
+    index = find(strcmp(SpandrelName,cbnames{aa}) & strcmp(SpandrelLoadCombo,combos{bb}));
+    Lvls = SpandrelStoryLabels(index);
+    Forces = SpandrelForces(index,:);
     Data = [Lvls,num2cell(mergeVectors(Elevations(1:end-1),Elevations(2:end))),Forces];
     for cc = 1:length(plots)
       subplot(1,length(plots),cc); hold on;

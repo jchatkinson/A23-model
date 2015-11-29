@@ -1,0 +1,276 @@
+
+
+ ETABS 2015 Ultimate 64-bit 15.0.0 Build 1221 (Analysis Build 9340/64)
+ File: C:\Users\TheTrailblazer...ents\GitHub\A23-model\A23example-72x72-Wind.LOG
+
+
+
+
+ B E G I N   A N A L Y S I S                                2015/11/28  14:33:29
+
+
+ RUNNING ANALYSIS AS A SEPARATE PROCESS
+ USING THE ADVANCED SOLVER (PROVIDES LIMITED INSTABILITY INFORMATION)
+
+ NUMBER OF JOINTS                          =        1065
+    WITH RESTRAINTS                        =         145
+    WITH MASS                              =         173
+    WITH SPRINGS                           =         127
+ NUMBER OF FRAME/CABLE/TENDON ELEMENTS     =         632
+ NUMBER OF SHELL ELEMENTS                  =         401
+ NUMBER OF CONSTRAINTS/WELDS               =          68
+ NUMBER OF LOAD PATTERNS                   =           7
+ NUMBER OF ACCELERATION LOADS              =           6
+ NUMBER OF LOAD CASES                      =           8
+
+
+ E L E M E N T   F O R M A T I O N                                      14:33:29
+
+
+ NUMBER OF COUPLED CONSTRAINT EQUATIONS    =           0
+
+
+ L I N E A R   E Q U A T I O N   S O L U T I O N                        14:33:29
+
+ FORMING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
+
+ TOTAL NUMBER OF EQUILIBRIUM EQUATIONS     =        3129
+ NUMBER OF NON-ZERO STIFFNESS TERMS        =       59790
+
+ * * * W A R N I N G * * *
+ THE STRUCTURE IS UNSTABLE OR ILL-CONDITIONED !!
+ CHECK THE STRUCTURE CAREFULLY FOR:
+ - INADEQUATE SUPPORT CONDITIONS, OR
+ - ONE OR MORE INTERNAL MECHANISMS, OR
+ - ZERO OR NEGATIVE STIFFNESS PROPERTIES, OR
+ - EXTREMELY LARGE STIFFNESS PROPERTIES, OR
+ - BUCKLING DUE TO P-DELTA OR GEOMETRIC NONLINEARITY, OR
+ - A FREQUENCY SHIFT (IF ANY) ONTO A NATURAL FREQUENCY
+
+ TO OBTAIN FURTHER INFORMATION:
+ - USE THE STANDARD SOLVER, OR
+ - RUN AN EIGEN ANALYSIS USING AUTO FREQUENCY SHIFTING (WITH
+   ADDITIONAL MASS IF NEEDED) AND INVESTIGATE THE MODE SHAPES
+
+
+ NUMBER OF EIGENVALUES BELOW SHIFT         =           0
+
+
+ L I N E A R   S T A T I C   C A S E S                                  14:33:29
+
+ USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
+
+ TOTAL NUMBER OF CASES TO SOLVE            =           1
+ NUMBER OF CASES TO SOLVE PER BLOCK        =           1
+
+ LINEAR STATIC CASES TO BE SOLVED:
+
+ CASE: ~LLRF
+
+
+ M U L T I - S T E P   L I N E A R   S T A T I C   A N A L Y S I S      14:33:29
+
+ CASE: AUTOWIND
+
+ USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
+
+ NUMBER OF LOAD STEPS                      =           2
+
+
+ Solving load steps:       1 to       2
+ NUMBER OF OUTPUT STEPS SAVED              =           2
+
+
+ E I G E N   M O D A L   A N A L Y S I S                                14:33:29
+
+ CASE: MODAL
+
+ USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
+
+ NUMBER OF STIFFNESS DEGREES OF FREEDOM    =        3129
+ NUMBER OF MASS DEGREES OF FREEDOM         =         285
+ MAXIMUM NUMBER OF EIGEN MODES SOUGHT      =          12
+ MINIMUM NUMBER OF EIGEN MODES SOUGHT      =           1
+ NUMBER OF RESIDUAL-MASS MODES SOUGHT      =           0
+ NUMBER OF SUBSPACE VECTORS USED           =          24
+ RELATIVE CONVERGENCE TOLERANCE            =    1.00E-09
+
+ FREQUENCY SHIFT  (CENTER) (CYC/TIME)      =     .000000
+ FREQUENCY CUTOFF (RADIUS) (CYC/TIME)      =  -INFINITY-
+ ALLOW AUTOMATIC FREQUENCY SHIFTING        =         YES
+
+
+ Original stiffness at shift : EV= 0.0000000E+00, f=     .000000, T=  -INFINITY-
+ Number of eigenvalues below shift =      0
+ Found mode      1 of     12:  EV= 1.4836224E+00, f=    0.193857, T=    5.158438
+ Found mode      2 of     12:  EV= 2.4364690E+00, f=    0.248428, T=    4.025311
+ Found mode      3 of     12:  EV= 7.4485351E+00, f=    0.434366, T=    2.302207
+ Found mode      4 of     12:  EV= 3.7439505E+01, f=    0.973835, T=    1.026868
+ Found mode      5 of     12:  EV= 6.9711652E+01, f=    1.328840, T=    0.752536
+ Found mode      6 of     12:  EV= 9.2976299E+01, f=    1.534639, T=    0.651619
+ Found mode      7 of     12:  EV= 1.8157034E+02, f=    2.144582, T=    0.466291
+ Found mode      8 of     12:  EV= 2.3369715E+02, f=    2.433026, T=    0.411011
+ Found mode      9 of     12:  EV= 4.6208453E+02, f=    3.421219, T=    0.292293
+ Found mode     10 of     12:  EV= 5.4287909E+02, f=    3.708273, T=    0.269667
+ Found mode     11 of     12:  EV= 6.2088492E+02, f=    3.965753, T=    0.252159
+ Found mode     12 of     12:  EV= 8.9966236E+02, f=    4.773753, T=    0.209479
+
+ NUMBER OF EIGEN MODES FOUND               =          12
+ NUMBER OF ITERATIONS PERFORMED            =          10
+ NUMBER OF STIFFNESS SHIFTS                =           0
+
+
+ R E S P O N S E - S P E C T R U M   A N A L Y S I S                    14:33:30
+
+ CASE: RSAX
+
+ TYPE OF EXCITATION                        = STANDARD GROUND ACCELERATION
+
+ USING MODES FROM CASE: MODAL
+ NUMBER OF DYNAMIC MODES TO BE USED        =          12
+
+
+ R E S P O N S E - S P E C T R U M   A N A L Y S I S                    14:33:30
+
+ CASE: RSAY
+
+ TYPE OF EXCITATION                        = STANDARD GROUND ACCELERATION
+
+ USING MODES FROM CASE: MODAL
+ NUMBER OF DYNAMIC MODES TO BE USED        =          12
+
+
+ R E S P O N S E - S P E C T R U M   A N A L Y S I S                    14:33:30
+
+ CASE: RSAY-PT
+
+ TYPE OF EXCITATION                        = STANDARD GROUND ACCELERATION
+
+ USING MODES FROM CASE: MODAL
+ NUMBER OF DYNAMIC MODES TO BE USED        =          12
+
+
+ R E S P O N S E - S P E C T R U M   A N A L Y S I S                    14:33:30
+
+ CASE: RSAY-NT
+
+ TYPE OF EXCITATION                        = STANDARD GROUND ACCELERATION
+
+ USING MODES FROM CASE: MODAL
+ NUMBER OF DYNAMIC MODES TO BE USED        =          12
+
+
+ R E S P O N S E - S P E C T R U M   A N A L Y S I S                    14:33:30
+
+ CASE: RSAX-NT
+
+ TYPE OF EXCITATION                        = STANDARD GROUND ACCELERATION
+
+ USING MODES FROM CASE: MODAL
+ NUMBER OF DYNAMIC MODES TO BE USED        =          12
+
+
+ A N A L Y S I S   C O M P L E T E                          2015/11/28  14:33:30
+
+
+ ETABS 2015 Ultimate 64-bit 15.0.0 Build 1221 (Analysis Build 9340/64)
+ File: C:\Users\TheTrailblazer...ents\GitHub\A23-model\A23example-72x72-Wind.LOG
+
+
+
+
+ B E G I N   A N A L Y S I S                                2015/11/28  14:33:33
+
+
+ RUNNING ANALYSIS AS A SEPARATE PROCESS
+ USING THE ADVANCED SOLVER (PROVIDES LIMITED INSTABILITY INFORMATION)
+
+ NUMBER OF JOINTS                          =        1065
+    WITH RESTRAINTS                        =         145
+    WITH MASS                              =         173
+    WITH SPRINGS                           =         127
+ NUMBER OF FRAME/CABLE/TENDON ELEMENTS     =         632
+ NUMBER OF SHELL ELEMENTS                  =         401
+ NUMBER OF CONSTRAINTS/WELDS               =          68
+ NUMBER OF LOAD PATTERNS                   =          10
+ NUMBER OF ACCELERATION LOADS              =           6
+ NUMBER OF LOAD CASES                      =          11
+
+
+ E L E M E N T   F O R M A T I O N                                      14:33:33
+
+
+ NUMBER OF COUPLED CONSTRAINT EQUATIONS    =           0
+
+
+ L I N E A R   E Q U A T I O N   S O L U T I O N                        14:33:33
+
+ FORMING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
+
+ TOTAL NUMBER OF EQUILIBRIUM EQUATIONS     =        3129
+ NUMBER OF NON-ZERO STIFFNESS TERMS        =       59790
+
+ * * * W A R N I N G * * *
+ THE STRUCTURE IS UNSTABLE OR ILL-CONDITIONED !!
+ CHECK THE STRUCTURE CAREFULLY FOR:
+ - INADEQUATE SUPPORT CONDITIONS, OR
+ - ONE OR MORE INTERNAL MECHANISMS, OR
+ - ZERO OR NEGATIVE STIFFNESS PROPERTIES, OR
+ - EXTREMELY LARGE STIFFNESS PROPERTIES, OR
+ - BUCKLING DUE TO P-DELTA OR GEOMETRIC NONLINEARITY, OR
+ - A FREQUENCY SHIFT (IF ANY) ONTO A NATURAL FREQUENCY
+
+ TO OBTAIN FURTHER INFORMATION:
+ - USE THE STANDARD SOLVER, OR
+ - RUN AN EIGEN ANALYSIS USING AUTO FREQUENCY SHIFTING (WITH
+   ADDITIONAL MASS IF NEEDED) AND INVESTIGATE THE MODE SHAPES
+
+
+ NUMBER OF EIGENVALUES BELOW SHIFT         =           0
+
+
+ L I N E A R   S T A T I C   C A S E S                                  14:33:33
+
+ USING STIFFNESS AT ZERO (UNSTRESSED) INITIAL CONDITIONS
+
+ TOTAL NUMBER OF CASES TO SOLVE            =           3
+ NUMBER OF CASES TO SOLVE PER BLOCK        =           3
+
+ LINEAR STATIC CASES TO BE SOLVED:
+
+ CASE: ~TORSIONRSAY-PT
+ CASE: ~TORSIONRSAY-NT
+ CASE: ~TORSIONRSAX-NT
+
+
+ R E S P O N S E - S P E C T R U M   A N A L Y S I S                    14:33:33
+
+ CASE: RSAY-PT
+
+ TYPE OF EXCITATION                        = STANDARD GROUND ACCELERATION
+
+ USING MODES FROM CASE: MODAL
+ NUMBER OF DYNAMIC MODES TO BE USED        =          12
+
+
+ R E S P O N S E - S P E C T R U M   A N A L Y S I S                    14:33:33
+
+ CASE: RSAY-NT
+
+ TYPE OF EXCITATION                        = STANDARD GROUND ACCELERATION
+
+ USING MODES FROM CASE: MODAL
+ NUMBER OF DYNAMIC MODES TO BE USED        =          12
+
+
+ R E S P O N S E - S P E C T R U M   A N A L Y S I S                    14:33:33
+
+ CASE: RSAX-NT
+
+ TYPE OF EXCITATION                        = STANDARD GROUND ACCELERATION
+
+ USING MODES FROM CASE: MODAL
+ NUMBER OF DYNAMIC MODES TO BE USED        =          12
+
+
+ A N A L Y S I S   C O M P L E T E                          2015/11/28  14:33:33
