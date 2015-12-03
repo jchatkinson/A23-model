@@ -17,25 +17,34 @@ FlangesAndWebsARSA =  ReadDataFromEtabs('45x45','RSA','FlangesAndWebs');
 FlangesAndWebsAWind =  ReadDataFromEtabs('45x45','Wind','FlangesAndWebs');
 FlangesAndWebsBRSA =  ReadDataFromEtabs('72x72','RSA','FlangesAndWebs');
 FlangesAndWebsBWind =  ReadDataFromEtabs('72x72','Wind','FlangesAndWebs');
-
+write2excel = 1;
 
 linetypes={'--k','--b',':c','--r','-+g','b','b'};
 % Grav forces
 PlotEtabsGravity(WallTotalAGrav,PiersAGrav,linetypes,1)
 
-const.X.SF = .226;
+const.X.SF = .224;
 const.X.Rd = 4;
 const.X.Ro = 1.7;
 
-const.Y.SF = 0.246;
+const.Y.SF = 0.225;
 const.Y.Rd = 3.5;
 const.Y.Ro = 1.6;
 
 % Building A
 [MatForcesA,MatDriftA,MatDispA] = plotEtabsEachBuilding(WallTotalARSA,WallTotalAWind,PiersARSA,PiersAWind,FlangesAndWebsARSA,FlangesAndWebsAWind,const,linetypes);
-% 
+
+%
 % Building B
 [MatForcesB,MatDriftB,MatDispB] = plotEtabsEachBuilding(WallTotalBRSA,WallTotalBWind,PiersBRSA,PiersBWind,FlangesAndWebsBRSA,FlangesAndWebsBWind,const,linetypes);
 
-
+if write2excel
+    xlswrite('45X45Summary.xlsx',MatForcesA,'All Results','A4')
+    xlswrite('45X45Summary.xlsx',MatDriftA,'Drift','A4')
+    xlswrite('45X45Summary.xlsx',MatDispA,'Disps','A4')
+    xlswrite('72X72Summary.xlsx',MatForcesB,'All Results','A4')
+    xlswrite('72X72Summary.xlsx',MatDriftB,'Drift','A4')
+    xlswrite('72X72Summary.xlsx',MatDispB,'Disps','A4')
+    
+end
 Geom = DesignerGeom
