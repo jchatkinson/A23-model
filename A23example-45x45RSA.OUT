@@ -13,12 +13,12 @@
 
                      TRANSLATIONAL MASS AND MASS MOMENTS OF INERTIA
                   U1          U2          U3          R1          R2          R3
-          152.451186  152.451186     .000000     .000000     .000000  3.2205E+09
+          161.160005  161.160005     .000000     .000000     .000000  3.3088E+09
 
                      CENTER OF MASS
   GLOBAL          U1          U2          U3
-     X     38.889008   38.889008 -189.393153
-     Y      3.19E-14    3.19E-14    2.10E-13
+     X     37.435971   37.435971 -189.504925
+     Y      5.07E-14    5.07E-14    2.10E-13
      Z     90150.000   90150.000   90150.000
 
  3, CONSTR = RIGID, DOF = U1 U2 R3
@@ -694,25 +694,25 @@
      888 TO      73    +   +   A   A   A   +
    ~1146               A   A   A   A   A   A
     1110               +   +   -   -   -   +
-    1107 TO     218    A   A   A   A   A   A
-     217               +   +   A   A   A   +
-      72 TO   ~1147    A   A   A   A   A   A
+    1107 TO     220    A   A   A   A   A   A
+     219               +   +   A   A   A   +
+     218 TO   ~1147    A   A   A   A   A   A
     1111               +   +   -   -   -   +
     1103 TO     216    A   A   A   A   A   A
      215               +   +   A   A   A   +
      214 TO   ~1148    A   A   A   A   A   A
     1112               +   +   -   -   -   +
-    1099 TO     210    A   A   A   A   A   A
-     209               +   +   A   A   A   +
-      64 TO   ~1149    A   A   A   A   A   A
+    1099 TO     212    A   A   A   A   A   A
+     211               +   +   A   A   A   +
+     210 TO   ~1149    A   A   A   A   A   A
     1113               +   +   -   -   -   +
-    1095 TO     206    A   A   A   A   A   A
-     205               +   +   A   A   A   +
-      60 TO   ~1115    A   A   A   A   A   A
+    1095 TO     208    A   A   A   A   A   A
+     207               +   +   A   A   A   +
+     206 TO   ~1115    A   A   A   A   A   A
     1114               +   +   -   -   -   +
-    1109 TO     200    A   A   A   A   A   A
-     199               +   +   A   A   A   +
-      56 TO       4    A   A   A   A   A   A
+    1109 TO     204    A   A   A   A   A   A
+     202               +   +   A   A   A   +
+     200 TO       4    A   A   A   A   A   A
     1090 TO     976    -   -   -   A   A   A
     1008 TO     990    -   -   -   -   -   -
      351 TO       3    -   -   -   A   A   A

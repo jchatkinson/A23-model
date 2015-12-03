@@ -13,12 +13,12 @@
 
                      TRANSLATIONAL MASS AND MASS MOMENTS OF INERTIA
                   U1          U2          U3          R1          R2          R3
-          152.451186  152.451186     .000000     .000000     .000000  3.2205E+09
+          161.160005  161.160005     .000000     .000000     .000000  3.3088E+09
 
                      CENTER OF MASS
   GLOBAL          U1          U2          U3
-     X     38.889008   38.889008 -189.393153
-     Y      3.19E-14    3.19E-14    1.42E-13
+     X     37.435971   37.435971 -189.504925
+     Y      5.07E-14    5.07E-14    1.44E-13
      Z     90150.000   90150.000   90150.000
 
  3, CONSTR = RIGID, DOF = U1 U2 R3
@@ -575,9 +575,9 @@
       73 TO     196    +   +   A   A   A   +
      209 TO     212    -   -   -   A   A   A
      213               +   +   A   A   A   +
-     214 TO     216    A   A   A   A   A   A
-     217               +   +   A   A   A   +
-     218 TO     220    A   A   A   A   A   A
+     214 TO     218    A   A   A   A   A   A
+     219               +   +   A   A   A   +
+     220               A   A   A   A   A   A
      221 TO     344    +   +   A   A   A   +
      357 TO     360    -   -   -   A   A   A
      361 TO     368    A   A   A   A   A   A
