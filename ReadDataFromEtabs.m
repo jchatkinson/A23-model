@@ -1,10 +1,10 @@
 % Clean Start
-
-close all; clc; clear all;
-
-BuildingType = '45x45';
-AnalysisType = 'Grav';
-WallSections = 'WallTotal';
+%
+% close all; clc; clear all;
+function [Data] = ReadDataFromEtabs(BuildingType,AnalysisType,WallSections)
+% BuildingType = '45x45';
+% AnalysisType = 'Grav';
+% WallSections = 'WallTotal';
 % WallPier = 'WallTotal';
 
 
@@ -18,6 +18,7 @@ else
 end
 
 CBtags = {'CB-NW','CB-SW','CB-NE','CB-SE'};
+CBtagsFields = {'CBNW','CBSW','CBNE','CBSE'};
 
 DriftTags = {'Max Drift X','Max Drift Y'};
 
@@ -52,7 +53,7 @@ if strmatch(AnalysisType,'RSA')
     SpandrelName = SpandrelTabel(4:end,2);
     SpandrelLoadCombo = SpandrelTabel(4:end,3);
     SpandrelForces = SpandrelTabel(4:end,8);
-        SpandrelSide = SpandrelTabel(4:end,6);
+    SpandrelSide = SpandrelTabel(4:end,6);
     
     % Story drifts
     DriftsStoryLabels = DriftsTable(4:end,1);
@@ -79,7 +80,7 @@ elseif strmatch(AnalysisType,'Grav')
     SpandrelName = SpandrelTabel(4:end,2);
     SpandrelLoadCombo = SpandrelTabel(4:end,3);
     SpandrelForces = SpandrelTabel(4:end,6);
-      SpandrelSide = SpandrelTabel(4:end,4);
+    SpandrelSide = SpandrelTabel(4:end,4);
     
     % Story drifts
     DriftsStoryLabels = DriftsTable(4:end,1);
@@ -107,7 +108,7 @@ elseif strmatch(AnalysisType,'Wind')
     SpandrelName = SpandrelTabel(4:end,2);
     SpandrelLoadCombo = SpandrelTabel(4:end,5);
     SpandrelForces = SpandrelTabel(4:end,8);
-      SpandrelSide = SpandrelTabel(4:end,6);
+    SpandrelSide = SpandrelTabel(4:end,6);
     % Story drifts
     DriftsStoryLabels = DriftsTable(4:end,1);
     DriftsLoadCombo = DriftsTable(4:end,4);
@@ -120,31 +121,13 @@ elseif strmatch(AnalysisType,'Wind')
     DispStory = DispTable(4:end,6:7);
     DispsDir = DispTable(4:end,5);
 end
-%% Example - filter data by loadCombo
-
-% myCombo = 'RSAx'; % 'RSAx' 'RSAx-nT' 'RSAx-pT' 'RSAy' 'RSAy-nT' 'RSAy-pT' 'AutoWind1' 'AutoWind2'
-% myPier = 'WallTotal';
-% index = find(strcmp(PierName,myPier) & strcmp(PierLoadCombo,myCombo));
-% Lvls = PierStoryLabels(index);
-% Forces = PierForces(index,:);
-% Data = [Lvls,num2cell(mergeVectors(Elevations(1:end-1),Elevations(2:end))),Forces];
-
-%% Plot Wall Forces (for each pier,combo)
-
-
-plots={'P','V2','V3','M2','M3'};
-col=[2,3,4,6,7];
-% combos={'RSAx' 'RSAx-nT' 'RSAx-pT' 'RSAy' 'RSAy-nT' 'RSAy-pT' 'AutoWind1' 'AutoWind2'};
-
-% linetypes={'r','r','r','m','m','m','b','b'};
-linetypes={'r','r','m','m','m','b','b'};
 
 
 for aa = 1:length(piers)
-    figure; hold on;
+    
     
     for bb = 1:length(combos)
-        %get the data
+        
         if strmatch(AnalysisType, 'Wind')
             index = find(strcmp(PierName,piers{aa}) & ismember(cell2mat(PierLoadCombo),combos{bb}));
         else
@@ -152,54 +135,40 @@ for aa = 1:length(piers)
         end
         Lvls = PierStoryLabels(index);
         Forces = PierForces(index,:);
-        Data.Walls.(combosFields{bb}) = [cell2mat(Elvs),cell2mat(Forces)];
-        
-        
-        for cc = 1:length(plots)
-            subplot(1,length(plots),cc); hold on;
-            plot((Data.Walls.(combosFields{bb})(:,col(cc))),(Data.Walls.(combosFields{bb})(:,1)),linetypes{bb});
-            xlabel(plots{cc});
-        end
+        Data.Walls.(combosFields{bb}).(piers{aa}) = [cell2mat(Elvs),cell2mat(Forces)];
         
     end
-    suptitle(piers{aa});
-    hold off
 end
+% 
+% figure;plot(Data.Walls.(combosFields{bb-1}).(piers{aa})(:,2),Data.Walls.(combosFields{bb-1}).(piers{aa})(:,1),'-r')
 
-plots={'V'};
-col=[2];
+
 for aa = 1:length(CBtags)
-    figure; hold on;
+    
     
     for bb = 1:length(combos)
-        %get the data
+        
         if strmatch(AnalysisType, 'Wind')
-            index = find(strcmp(SpandrelName,CBtags{aa}) & ismember(cell2mat(SpandrelLoadCombo),combos{bb}) & strcmp(SpandrelSide,'Left'));
+            index = find(strcmp(SpandrelName,CBtags{aa}) & ismember(cell2mat(SpandrelLoadCombo),combos{bb}) );
         else
-            index = find(strcmp(SpandrelName,CBtags{aa}) & strcmp(SpandrelLoadCombo,(combos{bb}))& strcmp(SpandrelSide,'Left'));
+            index = find(strcmp(SpandrelName,CBtags{aa}) & strcmp(SpandrelLoadCombo,(combos{bb})));
         end
-    unqel = sort(unique(cell2mat(Elvs)),'descend');
-    unqel = unqel(2:end);
+        unqel = sort(unique(cell2mat(Elvs)),'descend');
+        unqel = unqel(2:end);
         Lvls = SpandrelStoryLabels(index);
         Forces = SpandrelForces(index,:);
-        Data.CB.(combosFields{bb}) =  [(unqel),cell2mat(Forces)];
+        Data.CB.(combosFields{bb}).(CBtagsFields{aa}) =  [cell2mat(Elvs),cell2mat(Forces)];
         
-        for cc = 1:length(plots)
-            subplot(1,length(plots),cc); hold on;
-            plot(Data.CB.(combosFields{bb})(:,col(cc)),Data.CB.(combosFields{bb})(:,1),linetypes{bb});
-            xlabel(plots{cc});
-        end
+        
         
     end
-    suptitle(CBtags{aa});
-    hold off
+    
 end
 
 
 
-figure; hold on;
 for bb = 1:length(combos)
-    %get the data
+    
     if strmatch(AnalysisType, 'Wind')
         index = find(strcmp(DriftsDir,'Max Drift X') &ismember(cell2mat(DriftsLoadCombo),combos{bb}));
     else
@@ -207,22 +176,12 @@ for bb = 1:length(combos)
     end
     Lvls = DriftsStoryLabels(index);
     Drifts = DriftsStoryDrifts(index,:);
-
+    
     Data.DriftX.(combosFields{bb}) = [unqel,cell2mat(Drifts)];
-    %Data.DriftX.(combosFields{bb}) = [Lvls,unqel,Drifts];
-    for cc = 1:length(plots)
-        subplot(1,length(plots),cc); hold on;
-        plot(Data.DriftX.(combosFields{bb})(:,col(cc)),Data.DriftX.(combosFields{bb})(:,1),linetypes{bb});
-        xlabel('Drift X');
-    end
+    
     
 end
-suptitle('Drifts');
-hold off
 
-
-
-figure; hold on;
 for bb = 1:length(combos)
     %get the data
     if strmatch(AnalysisType, 'Wind')
@@ -232,27 +191,18 @@ for bb = 1:length(combos)
     end
     Lvls = DriftsStoryLabels(index);
     Drifts = DriftsStoryDrifts(index,:);
-%     unqel = sort(unique(cell2mat(Elvs)),'descend');
-%     unqel = unqel(2:end);
+    
     Data.DriftY.(combosFields{bb}) = [unqel,cell2mat(Drifts)];
-    %Data.DriftX.(combosFields{bb}) = [Lvls,unqel,Drifts];
-    for cc = 1:length(plots)
-        subplot(1,length(plots),cc); hold on;
-        plot(Data.DriftY.(combosFields{bb})(:,col(cc)),Data.DriftY.(combosFields{bb})(:,1),linetypes{bb});
-        xlabel('Drift Y');
-    end
+    
     
 end
-suptitle('DriftsY');
-hold off
 
-plots={'Max','Avg'};
-col = [2,3]
-figure; hold on;
+
+
 for bb = 1:length(combos)
-    %get the data
+    
     if strmatch(AnalysisType, 'Wind')
-        index = find( ismember(cell2mat(DispLoadCombo),combos{bb}));
+        index = find(ismember(cell2mat(DispLoadCombo),combos{bb}));
     else
         index = find(strcmp(DispLoadCombo,(combos{bb})));
     end
@@ -261,13 +211,5 @@ for bb = 1:length(combos)
     unqel = sort(unique(cell2mat(Elvs)),'descend');
     
     Data.Disp.(combosFields{bb}) = [unqel,cell2mat(Disp)];
-    %Data.DriftX.(combosFields{bb}) = [Lvls,unqel,Drifts];
-    for cc = 1:length(plots)
-        subplot(1,length(plots),cc); hold on;
-        plot(Data.Disp.(combosFields{bb})(:,col(cc)),Data.Disp.(combosFields{bb})(:,1),linetypes{bb});
-        xlabel('Max \Delta');
-    end
     
 end
-suptitle('Disp');
-hold off
