@@ -6,3 +6,15 @@
 # ignore matlab autosave files
 *.asv
 
+*.OUT
+*.msh
+*.Y~1
+*.Y03
+*.LOG
+*.K~E
+*.Y04
+*.K~G
+*.Y05
+A23example-45x45RSA.Y02
+*.Y03
+A23example-45x45RSA.Y01
