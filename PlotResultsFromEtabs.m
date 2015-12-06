@@ -17,7 +17,7 @@ FlangesAndWebsARSA =  ReadDataFromEtabs('45x45','RSA','FlangesAndWebs');
 FlangesAndWebsAWind =  ReadDataFromEtabs('45x45','Wind','FlangesAndWebs');
 FlangesAndWebsBRSA =  ReadDataFromEtabs('72x72','RSA','FlangesAndWebs');
 FlangesAndWebsBWind =  ReadDataFromEtabs('72x72','Wind','FlangesAndWebs');
-write2excel = 1;
+write2excel = 0;
 
 linetypes={'--k','--b',':c','--r','-+g','b','b'};
 % Grav forces
@@ -47,4 +47,18 @@ if write2excel
     xlswrite('72X72Summary.xlsx',MatDispB,'Disps','A4')
     
 end
-Geom = DesignerGeom
+Geom = DesignerGeom;
+Design.Info = 1;
+Vfw = MatForcesA(Geom.indun,108)*1000;
+VfeNT = MatForcesA(Geom.indun,105)*1000;
+Vfe = max(MatForcesA(Geom.indun,107),MatForcesA(Geom.indun,106))*1000;
+
+[~,PlotMatrix1] = SimpleDesignCBs('CB1',Geom,Geom.dcb1,Geom.o1,Vfe,Vfe,VfeNT,1,Design);
+[Design,PlotMatrix2] = SimpleDesignCBs('CB1',Geom,Geom.dcb1,Geom.o1,Vfw,Vfe,VfeNT,1,Design);
+PlotMatrix = [PlotMatrix1 PlotMatrix2];
+
+Vfw = MatForcesA(Geom.indun,112)*1000;
+ VfeNT = MatForcesA(Geom.indun,109)*1000;
+Vfe = max(MatForcesA(Geom.indun,110),MatForcesA(Geom.indun,111))*1000;
+
+[Design,PlotMatrix] = SimpleDesignCBs('CB2',Geom,Geom.dcb2,Geom.o2,Vfw,Vfe,VfeNT,1,Design);
