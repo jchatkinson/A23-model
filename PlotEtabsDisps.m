@@ -20,7 +20,7 @@ end
 beta2 = max(beta2);
 
 
-Els = WallTotalARSA.Disp.RSAx(:,1);
+Els = WallTotalARSA.Disp.RSAx(:,1)/1000;
 subplot(1,2,1);
 
 

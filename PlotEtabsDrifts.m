@@ -2,7 +2,7 @@ function [mATvALS] = PlotEtabsDrifts(WallTotalARSA,WallTotalAWind,linetypes,SF)
 
 figure;
 
-Els = WallTotalARSA.DriftX.RSAx(:,1);
+Els = WallTotalARSA.DriftX.RSAx(:,1)/1000;
 subplot(1,2,1);
 SFx = SF.X.SF*SF.X.Rd*SF.X.Ro;
 SFy = SF.Y.SF*SF.Y.Rd*SF.Y.Ro;
